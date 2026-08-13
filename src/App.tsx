@@ -355,7 +355,7 @@ export function App() {
       </div>
 
       <div
-        className="fixed inset-0 bg-cover bg-no-repeat transition-all duration-1000 scale-105 pointer-events-none z-0"
+        className="fixed inset-0 bg-cover bg-no-repeat pointer-events-none z-0"
         style={{
           backgroundImage: `url('/village_bg.png')`,
           backgroundPosition: 'center 70%',
