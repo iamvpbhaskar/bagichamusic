@@ -241,10 +241,44 @@ export function App() {
     if (videoData?.title) {
       const { song, artist } = parseSongMeta(videoData.title);
       setCurrentSongTitle(song);
-      setCurrentArtist(artist || videoData.author || '');
+      const finalArtist = artist || videoData.author || '';
+      setCurrentArtist(finalArtist);
+
+      // Setup Media Session API for background/lock-screen play
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: song,
+          artist: finalArtist,
+          album: 'Bagicha Music',
+          artwork: [
+            { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+            { src: '/icon-512.png', sizes: '512x512', type: 'image/png' }
+          ]
+        });
+      }
     }
     updatePlaylistInfo();
   }, [updatePlaylistInfo]);
+
+  // Register Media Session Action Handlers
+  useEffect(() => {
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.setActionHandler('play', () => {
+        playerRef.current?.playVideo();
+      });
+      navigator.mediaSession.setActionHandler('pause', () => {
+        playerRef.current?.pauseVideo();
+      });
+      navigator.mediaSession.setActionHandler('previoustrack', () => {
+        playerRef.current?.previousVideo();
+        setTimeout(updateTrackMeta, 800);
+      });
+      navigator.mediaSession.setActionHandler('nexttrack', () => {
+        playerRef.current?.nextVideo();
+        setTimeout(updateTrackMeta, 800);
+      });
+    }
+  }, [updateTrackMeta]);
 
   // Check if song title overflows and needs marquee
   useEffect(() => {
