@@ -1,0 +1,11 @@
+# Bagicha Music
+
+Bagicha Music (आपन गांव के बाग बगीचा) is a free, interactive web-based radio station playing classic 70s, 80s, and 90s Bollywood music. 
+
+## Features
+- Streams timeless hits from Kishore Kumar, Mohammad Rafi, Lata Mangeshkar, and Asha Bhosle.
+- Designed with a deeply nostalgic "village courtyard" aesthetic.
+- Completely free with no login required.
+- Uses the YouTube IFrame API to stream audio seamlessly in the background.
+
+Website: https://bagichamusic.vercel.app
