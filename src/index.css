@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #2C3631;
+    --accent-gold: #E5B869;
+    --accent-green: #5A7D59;
+    --accent-cloud: #84969E;
+    --text-cream: #F2EFE9;
+    --text-muted: #B8C0BA;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-cream);
+    font-family: 'Outfit', 'Mukta', sans-serif;
+  }
+}
+
+.font-rozha {
+  font-family: 'Rozha One', 'Mukta', serif;
+}
+
+.font-yatra {
+  font-family: 'Yatra One', 'Mukta', serif;
+}
+
+.font-mukta {
+  font-family: 'Mukta', sans-serif;
+}
+
+.green-text-glow {
+  text-shadow: 0 0 20px rgba(90, 125, 89, 0.8), 0 0 40px rgba(90, 125, 89, 0.4);
+}
+
+.gold-text-glow {
+  text-shadow: 0 0 15px rgba(229, 184, 105, 0.8), 0 0 30px rgba(229, 184, 105, 0.4);
+}
+
+.player-card-shadow {
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(90, 125, 89, 0.15),
+    inset 0 1px 1px rgba(242, 239, 233, 0.15);
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Marquee scrolling text for long track titles */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  10% { transform: translateX(0%); }
+  90% { transform: translateX(calc(-100% + 200px)); }
+  100% { transform: translateX(calc(-100% + 200px)); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marqueeScroll 8s linear infinite;
+  animation-delay: 1s;
+}
+
+/* ON AIR breathing pulse */
+@keyframes onAirPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(255, 140, 61, 0.9), 0 0 12px rgba(255, 140, 61, 0.5); }
+  50% { opacity: 0.5; box-shadow: 0 0 3px rgba(255, 140, 61, 0.4), 0 0 6px rgba(255, 140, 61, 0.2); }
+}
+
+.on-air-pulse {
+  animation: onAirPulse 2s ease-in-out infinite;
+}
+
+/* First-visit play button nudge ring */
+@keyframes nudgeRing {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.play-nudge-ring {
+  animation: nudgeRing 2s ease-out infinite;
+}

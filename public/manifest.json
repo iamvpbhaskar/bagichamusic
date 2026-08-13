@@ -1,0 +1,22 @@
+{
+  "name": "आपण गांव के बाग बगीचा",
+  "short_name": "बाग बगीचा",
+  "description": "Kishore Kumar & golden-era Bollywood nostalgia — चौखट, खेत, और सुहाने मौसम की यादें",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#5A7D59",
+  "background_color": "#2C3631",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
