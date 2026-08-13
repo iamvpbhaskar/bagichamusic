@@ -136,20 +136,22 @@ export function App() {
   const [birdsOn, setBirdsOn] = useState<boolean>(false);
   const birdsAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    if (birdsOn) {
-      if (!birdsAudioRef.current) {
-        birdsAudioRef.current = new Audio('/freesound_community-birds-chirping-ambiance-26052.mp3');
-        birdsAudioRef.current.loop = true;
-        birdsAudioRef.current.volume = 0.4;
-      }
+  const toggleBirds = () => {
+    const nextState = !birdsOn;
+    setBirdsOn(nextState);
+
+    if (!birdsAudioRef.current) {
+      birdsAudioRef.current = new Audio('/freesound_community-birds-chirping-ambiance-26052.mp3');
+      birdsAudioRef.current.loop = true;
+      birdsAudioRef.current.volume = 0.4;
+    }
+
+    if (nextState) {
       birdsAudioRef.current.play().catch(console.error);
     } else {
-      if (birdsAudioRef.current) {
-        birdsAudioRef.current.pause();
-      }
+      birdsAudioRef.current.pause();
     }
-  }, [birdsOn]);
+  };
 
   const playerRef = useRef<any>(null);
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -388,7 +390,7 @@ export function App() {
 
           {/* Ambient Sounds Toggle Panel */}
           <button 
-            onClick={() => setBirdsOn(!birdsOn)}
+            onClick={toggleBirds}
             title="मन फ्रेश"
             className={`mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full backdrop-blur-md border shadow-lg font-mukta text-[10px] sm:text-xs transition-all duration-300 ${
               birdsOn 
