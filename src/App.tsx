@@ -373,8 +373,8 @@ export function App() {
       <div className="fixed inset-0 pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(20, 26, 23, 0.6) 100%)' }} />
 
       {/* 2. Top-Left Clock Widget & Top-Right Dedication Badge */}
-      <header className="relative z-20 flex items-start justify-between w-full max-w-6xl mx-auto mb-2">
-        {/* Top-Left Widget (Clock) */}
+      <header className="sticky top-0 sm:top-2 z-50 flex items-start justify-between w-full max-w-6xl mx-auto mb-1 sm:mb-2 py-2">
+        {/* Top-Left Widget (Clock & Ambience) */}
         <div className="flex flex-col items-start gap-1 text-left drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
           <div className="text-[#F2EFE9]" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.9)' }}>
             <div className="font-mono text-2xl sm:text-3xl font-bold tracking-tight">{formattedTime}</div>
@@ -413,7 +413,7 @@ export function App() {
       </header>
 
       {/* 3. Main Title */}
-      <main className="relative z-20 text-center my-auto py-3 sm:py-6 flex flex-col items-center justify-center space-y-2 px-2">
+      <main className="relative z-20 text-center my-auto py-2 flex flex-col items-center justify-center space-y-1 sm:space-y-2 px-2">
         <h1
           className="font-yatra text-[#F2EFE9] green-text-glow tracking-wide leading-tight"
           style={{ fontSize: 'clamp(2.8rem, 8vw, 7rem)' }}
