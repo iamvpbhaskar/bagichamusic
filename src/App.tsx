@@ -72,6 +72,7 @@ export function App() {
   const [hasPlayedOnce, setHasPlayedOnce] = useState<boolean>(false);
   const [showTracklist, setShowTracklist] = useState<boolean>(false);
   const [showAbout, setShowAbout] = useState<boolean>(false);
+  const [hasEntered, setHasEntered] = useState<boolean>(false);
   const [playlistTitles, setPlaylistTitles] = useState<string[]>([]);
   const [time, setTime] = useState(new Date());
 
@@ -382,11 +383,41 @@ export function App() {
   const formattedDate = time.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' }).toUpperCase() + ' • IST';
 
   return (
-    <div className="relative min-h-screen min-h-[100dvh] w-full overflow-y-auto bg-[#2C3631] select-none flex flex-col justify-between p-3 sm:p-6 md:p-8">
+    <div className="relative h-screen h-[100dvh] w-full overflow-y-auto bg-[#2C3631] select-none flex flex-col justify-between p-3 sm:p-6 md:p-8">
       {/* Hidden YouTube Audio Engine */}
       <div className="fixed top-0 left-0 w-1 h-1 opacity-0 pointer-events-none overflow-hidden -z-50">
         <div id="hidden-yt-player" />
       </div>
+
+      {!hasEntered && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1A0F0A] select-none">
+          <div
+            className="absolute inset-0 bg-cover bg-no-repeat opacity-30 z-0 scale-105"
+            style={{
+              backgroundImage: `url('/village_bg.png')`,
+              backgroundPosition: 'center 70%',
+            }}
+          />
+          <div className="relative z-10 flex flex-col items-center gap-6">
+            <h1 className="font-yatra text-[#F2EFE9] text-5xl md:text-7xl drop-shadow-xl mb-2 green-text-glow text-center px-4 leading-tight">बाग बगीचा</h1>
+            <button 
+              onClick={() => {
+                setHasEntered(true);
+                handleTogglePlay();
+              }}
+              className="flex items-center gap-4 bg-[#141414]/90 hover:bg-[#1A1A1A] backdrop-blur-md border border-white/5 rounded-full pr-6 pl-2 py-2 transition-all hover:scale-105 active:scale-95 shadow-2xl group"
+            >
+              <div className="w-12 h-12 bg-[#B72A2A] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(183,42,42,0.5)] group-hover:bg-[#C93030] transition-colors shrink-0">
+                <Play className="w-5 h-5 text-white fill-current ml-1" />
+              </div>
+              <div className="flex flex-col items-start">
+                <span className="text-[#F2EFE9] font-mukta font-bold text-base md:text-lg leading-tight tracking-wide">Enter Bagicha Classics</span>
+                <span className="text-white/40 font-mono text-[9px] md:text-[10px] tracking-widest font-bold uppercase mt-0.5">Plays out loud</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
 
       <div
         className="fixed inset-0 bg-cover bg-no-repeat pointer-events-none z-0"
