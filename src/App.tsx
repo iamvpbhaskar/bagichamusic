@@ -36,7 +36,7 @@ const SUBTITLES = [
 
 const INFO_CONTENT = {
   hi: {
-    title: "आपण गांव के बाग बगीचा",
+    title: "आपन गांव के बाग बगीचा",
     subtitle: "Apan Gaon Ke Bagh Bagicha",
     description: "70, 80 और 90 के दशक की क्लासिक बॉलीवुड यादें। एक पुराने गांव के आंगन (चौखट) और मानसून के खेतों के माहौल के साथ — जिसका मकसद उन सरल समय और खूबसूरत मौसम की यादों को वापस लाना है।",
     builtBy: "निर्माता",
@@ -485,7 +485,7 @@ export function App() {
           className="font-yatra text-[#F2EFE9] green-text-glow tracking-wide leading-tight"
           style={{ fontSize: 'clamp(2.8rem, 8vw, 7rem)' }}
         >
-          आपण गांव के बाग बगीचा
+          आपन गांव के बाग बगीचा
         </h1>
         <p
           aria-live="polite"

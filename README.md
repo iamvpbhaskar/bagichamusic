@@ -1,4 +1,4 @@
-# आपण गांव के बाग बगीचा 🌿
+# आपन गांव के बाग बगीचा 🌿
 
 **Apan Gaon Ke Bagh Bagicha (Bagicha Music)** is a web-based interactive music station designed to bring back the charm of simpler times. It combines classic Bollywood nostalgia from the 70s, 80s, and 90s with the peaceful atmosphere of an old village courtyard (chaukhat) overlooking monsoon fields.
 
