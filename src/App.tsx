@@ -132,6 +132,25 @@ export function App() {
     return () => clearTimeout(timeout);
   }, [subtitleIndex]);
 
+  // Ambient Sounds
+  const [birdsOn, setBirdsOn] = useState<boolean>(false);
+  const birdsAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (birdsOn) {
+      if (!birdsAudioRef.current) {
+        birdsAudioRef.current = new Audio('/freesound_community-birds-chirping-ambiance-26052.mp3');
+        birdsAudioRef.current.loop = true;
+        birdsAudioRef.current.volume = 0.4;
+      }
+      birdsAudioRef.current.play().catch(console.error);
+    } else {
+      if (birdsAudioRef.current) {
+        birdsAudioRef.current.pause();
+      }
+    }
+  }, [birdsOn]);
+
   const playerRef = useRef<any>(null);
   const titleRef = useRef<HTMLParagraphElement>(null);
   const titleContainerRef = useRef<HTMLDivElement>(null);
@@ -365,6 +384,20 @@ export function App() {
             className="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 hover:bg-black/80 border border-white/20 backdrop-blur-md text-[#F2EFE9] hover:text-white transition-all text-[10px] sm:text-xs font-mono shadow-lg"
           >
             built by <Camera className="w-3 h-3" /> @vpbhaskar7
+          </button>
+
+          {/* Ambient Sounds Toggle Panel */}
+          <button 
+            onClick={() => setBirdsOn(!birdsOn)}
+            title="मन फ्रेश"
+            className={`mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full backdrop-blur-md border shadow-lg font-mukta text-[10px] sm:text-xs transition-all duration-300 ${
+              birdsOn 
+                ? 'bg-[#5A7D59]/30 border-[#5A7D59] text-[#E5B869]' 
+                : 'bg-black/40 border-white/10 text-[#B8C0BA] hover:text-white hover:bg-black/60'
+            }`}
+          >
+            <Volume2 className="w-3.5 h-3.5 shrink-0" />
+            <span className="font-medium tracking-wide">मन फ्रेश</span>
           </button>
         </div>
 
